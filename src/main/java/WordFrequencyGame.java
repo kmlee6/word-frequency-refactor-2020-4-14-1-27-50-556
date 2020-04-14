@@ -2,6 +2,13 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class WordFrequencyGame {
+    private final String SEPARATOR_PATTERN = "\\s+";
+    private final String LINE_BREAK = "\n";
+
+    public List<String> splitInputString(String inputString){
+        return Arrays.asList(inputString.split(SEPARATOR_PATTERN));
+    }
+
     public List<WordInfo> sortByWordFrequency(List<WordInfo> wordCount){
         return wordCount
                 .stream()
@@ -17,11 +24,8 @@ public class WordFrequencyGame {
                 .collect(Collectors.toList());
     }
 
-    public String getResult(String inputStr) {
-        final String SEPARATOR_PATTERN = "\\s+";
-        final String LINE_BREAK = "\n";
-
-        List<String> inputStringArray = Arrays.asList(inputStr.split(SEPARATOR_PATTERN));
+    public String getResult(String inputString) {
+        List<String> inputStringArray = splitInputString(inputString);
         List<WordInfo> wordCount = countWordFrequency(inputStringArray);
         wordCount = sortByWordFrequency(wordCount);
         return wordCount
