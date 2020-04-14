@@ -26,7 +26,7 @@ public class WordFrequencyGame {
         List<WordInfo> wordCount = countWordFrequency(inputStringArray);
         return wordCount
                 .stream()
-                .map(wordInfo -> wordInfo.toString())
+                .map(WordInfo::toString)
                 .collect(Collectors.joining(LINE_BREAK));
     }
 }
