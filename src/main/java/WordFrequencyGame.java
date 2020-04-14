@@ -15,7 +15,7 @@ public class WordFrequencyGame {
             int count = Collections.frequency(inputStringArray, word);
             wordCount.add(new WordInfo(word, count));
         }
-        return sortByWordFrequency(wordCount);
+        return wordCount;
     }
 
     public String getResult(String inputStr) {
@@ -24,6 +24,7 @@ public class WordFrequencyGame {
 
         List<String> inputStringArray = Arrays.asList(inputStr.split(SEPARATOR_PATTERN));
         List<WordInfo> wordCount = countWordFrequency(inputStringArray);
+        wordCount = sortByWordFrequency(wordCount);
         return wordCount
                 .stream()
                 .map(WordInfo::toString)
