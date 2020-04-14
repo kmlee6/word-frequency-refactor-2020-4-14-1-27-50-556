@@ -10,12 +10,11 @@ public class WordFrequencyGame {
     }
 
     public List<WordInfo> countWordFrequency(List<String> inputStringArray){
-        List<WordInfo> wordCount = new ArrayList<>();
-        for(String word : new HashSet<String>(inputStringArray)){
-            int count = Collections.frequency(inputStringArray, word);
-            wordCount.add(new WordInfo(word, count));
-        }
-        return wordCount;
+        List<String> uniqueInputString = new ArrayList<String>(new HashSet<String>(inputStringArray));
+        return uniqueInputString
+                .stream()
+                .map(word -> {return new WordInfo(word, Collections.frequency(inputStringArray, word));})
+                .collect(Collectors.toList());
     }
 
     public String getResult(String inputStr) {
