@@ -24,12 +24,9 @@ public class WordFrequencyGame {
 
         List<String> inputStringArray = Arrays.asList(inputStr.split(SEPARATOR_PATTERN));
         List<WordInfo> wordCount = countWordFrequency(inputStringArray);
-
-        StringJoiner joiner = new StringJoiner(LINE_BREAK);
-        for (WordInfo word : wordCount) {
-            String wordCountString = word.getValue() + " " + word.getWordCount();
-            joiner.add(wordCountString);
-        }
-        return joiner.toString();
+        return wordCount
+                .stream()
+                .map(wordInfo -> String.format("%s %s",wordInfo.getValue(), wordInfo.getWordCount()))
+                .collect(Collectors.joining(LINE_BREAK));
     }
 }
