@@ -2,16 +2,21 @@ public class WordInfo {
     private String value;
     private int count;
 
-    public WordInfo(String w, int i) {
-        this.value = w;
-        this.count = i;
+    public WordInfo(String word, int count) {
+        this.value = word;
+        this.count = count;
     }
 
     public String getValue() {
-        return this.value;
+        return value;
     }
 
-    public int getWordCount() {
-        return this.count;
+    public int getCount() {
+        return count;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s %s", getValue(), getCount());
     }
 }

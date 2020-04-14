@@ -5,7 +5,7 @@ public class WordFrequencyGame {
     public List<WordInfo> sortByWordFrequency(List<WordInfo> wordCount){
         return wordCount
                 .stream()
-                .sorted(Comparator.comparingInt(WordInfo::getWordCount).reversed())
+                .sorted(Comparator.comparingInt(WordInfo::getCount).reversed())
                 .collect(Collectors.toList());
     }
 
@@ -26,7 +26,7 @@ public class WordFrequencyGame {
         List<WordInfo> wordCount = countWordFrequency(inputStringArray);
         return wordCount
                 .stream()
-                .map(wordInfo -> String.format("%s %s",wordInfo.getValue(), wordInfo.getWordCount()))
+                .map(wordInfo -> wordInfo.toString())
                 .collect(Collectors.joining(LINE_BREAK));
     }
 }
